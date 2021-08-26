@@ -1,5 +1,4 @@
-﻿
-namespace ConfitecWenAPI.Domain.ObjectValues
+﻿namespace ConfitecWenAPI.Domain.ObjectValues
 {
     public enum Escolaridade : short
     {

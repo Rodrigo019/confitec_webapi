@@ -2,11 +2,8 @@
 using ConfitecWenAPI.Domain.ObjectValues;
 using ConfitecWenAPI.Domain.Validators;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace ConfitecWenAPI.Domain.Aggregations.Usuario
+namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Entities
 {
     public class UsuarioDomain : BaseDomain
     {
