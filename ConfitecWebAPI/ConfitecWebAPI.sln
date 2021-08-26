@@ -3,9 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Domain", "0-Domain", "{743B4484-8AA1-4763-804B-9A18D4604A04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Service", "1-Service", "{1297F2D1-7948-4C4D-8CCA-E88C21C9F30F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{08E60059-E52A-42F1-AB86-ACDF0EA9BF07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Presentation", "3-Presentation", "{640B8871-FD5E-40F7-8E5F-5F12C1B467FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infra", "4-Infra", "{68A0D46F-2EFF-44A1-BC0E-62516DD23D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfitecWebAPI", "ConfitecWebAPI\ConfitecWebAPI.csproj", "{39A4B291-E4C3-4150-9AD4-D9397F7FEEC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfitecWebAPI.Domain", "ConfitecWenAPI.Domain\ConfitecWebAPI.Domain.csproj", "{3C2AAEB2-930F-423A-A07B-64901245A7EC}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39A4B291-E4C3-4150-9AD4-D9397F7FEEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A4B291-E4C3-4150-9AD4-D9397F7FEEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A4B291-E4C3-4150-9AD4-D9397F7FEEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A4B291-E4C3-4150-9AD4-D9397F7FEEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2AAEB2-930F-423A-A07B-64901245A7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2AAEB2-930F-423A-A07B-64901245A7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2AAEB2-930F-423A-A07B-64901245A7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2AAEB2-930F-423A-A07B-64901245A7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39A4B291-E4C3-4150-9AD4-D9397F7FEEC2} = {640B8871-FD5E-40F7-8E5F-5F12C1B467FB}
+		{3C2AAEB2-930F-423A-A07B-64901245A7EC} = {743B4484-8AA1-4763-804B-9A18D4604A04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {983D03C5-6093-4069-9ACB-2C7AF09D770C}
