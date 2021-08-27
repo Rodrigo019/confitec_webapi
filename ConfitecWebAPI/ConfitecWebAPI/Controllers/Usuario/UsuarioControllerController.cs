@@ -9,7 +9,7 @@ namespace ConfitecWebAPI.Controllers.Usuario
     [ApiController]
     public class UsuarioControllerController : CrudBaseController<UsuarioDomain, UsuarioArgs>
     {
-        public UsuarioControllerController(IServiceCrudBase<UsuarioDomain, UsuarioArgs> service) : base(service)
+        public UsuarioControllerController(IServiceCrudBase<UsuarioDomain> service) : base(service)
         {
         }
     }
