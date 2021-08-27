@@ -1,5 +1,6 @@
 ﻿using ConfitecWebAPI.Domain.Aggregations.Usuario.Entities;
 using ConfitecWebAPI.Domain.Aggregations.Usuario.Interfaces;
+using ConfitecWebAPI.Domain.Exceptions;
 using System;
 
 namespace ConfitecWebAPI.Service.Usuario
@@ -11,26 +12,41 @@ namespace ConfitecWebAPI.Service.Usuario
         {
             this.repository = repository;
         }
-        public bool Delete(UsuarioDomain domain)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ValidacaoException("Não é possível deletar usuários com Id 0 ou menor!");
+
+            return repository.Delete(id);
         }
         public UsuarioDomain Get(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ValidacaoException("Não é possível buscar usuários com Id 0 ou menor!");
+
+            return repository.Get(id);
         }
-        public bool Insert(UsuarioDomain domain)
+        public UsuarioDomain Insert(UsuarioDomain domain)
         {
-            if (!domain.EmailValido)
-                throw new Exception("O e-mail do usuário é inválido!");
-            if (!domain.DataNascimentoValida)
-                throw new Exception("Data de nascimento do usuário é inválida!");
+            if (domain == null)
+                throw new ValidacaoException("Usuário informado não pode ser nulo!");
+            if (!domain.EmailValido())
+                throw new ValidacaoException("O e-mail do usuário é inválido!");
+            if (!domain.DataNascimentoValida())
+                throw new ValidacaoException("Data de nascimento do usuário é inválida!");
 
             return repository.Insert(domain);
         }
-        public bool Update(UsuarioDomain domain)
+        public UsuarioDomain Update(UsuarioDomain domain)
         {
-            throw new NotImplementedException();
+            if (domain == null || domain.Id <= 0)
+                throw new ValidacaoException("Não é possível alterar usuários com Id 0 ou menor!");
+            if (!domain.EmailValido())
+                throw new ValidacaoException("O e-mail do usuário é inválido!");
+            if (!domain.DataNascimentoValida())
+                throw new ValidacaoException("Data de nascimento do usuário é inválida!");
+
+            return repository.Update(domain);
         }
     }
 }

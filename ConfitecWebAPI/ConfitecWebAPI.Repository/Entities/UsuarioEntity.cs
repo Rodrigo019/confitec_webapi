@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ConfitecWebAPI.Repository.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ConfitecWebAPI.Repository.Entities
 {
-    public class UsuarioEntity
+    public class UsuarioEntity : BaseEntity
     {
         [Key]
         public int Id { get; set; }

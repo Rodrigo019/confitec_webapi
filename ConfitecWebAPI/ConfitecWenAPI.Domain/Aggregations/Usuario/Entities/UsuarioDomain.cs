@@ -13,7 +13,7 @@ namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Entities
         public DateTime DataNascimento { get; set; }
         public Escolaridade Escolaridade { get; set; }
 
-        public bool EmailValido => ValidaEmail.Valido(Email);            
-        public bool DataNascimentoValida => DataNascimento <= DateTime.Now;
+        public bool EmailValido() => ValidaEmail.Valido(Email);            
+        public bool DataNascimentoValida() => DataNascimento <= DateTime.Now;
     }
 }

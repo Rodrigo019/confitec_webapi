@@ -4,7 +4,8 @@ using ConfitecWebAPI.Domain.Interfaces.Repositories;
 namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Interfaces
 {
     public interface IUsuarioRepository :
-        IRepositoryCrudBase<UsuarioDomain>
+        IRepositoryCrudBase<UsuarioDomain>,
+        IRepositoryInsert<UsuarioDomain>
     {
     }
 }

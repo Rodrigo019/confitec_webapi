@@ -1,5 +1,6 @@
 ﻿using ConfitecWebAPI.Repository.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace ConfitecWebAPI.Repository.Context
 {
@@ -7,9 +8,15 @@ namespace ConfitecWebAPI.Repository.Context
     {
         public DbSet<UsuarioEntity> Usuarios { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("");
-        }
+        public ConfitecWebAPIContext(DbContextOptions<ConfitecWebAPIContext> options) : base(options) { }
+
+        //public ConfitecWebAPIContext(IConfiguration configuration) { }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    string 
+
+        //    optionsBuilder.UseSqlServer("");
+        //}
     }
 }

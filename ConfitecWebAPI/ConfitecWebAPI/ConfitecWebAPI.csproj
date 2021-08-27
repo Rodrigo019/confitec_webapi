@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConfitecWebAPI.Ioc\ConfitecWebAPI.Ioc.csproj" />
+    <ProjectReference Include="..\ConfitecWebAPI.Repository\ConfitecWebAPI.Repository.csproj" />
     <ProjectReference Include="..\ConfitecWenAPI.Domain\ConfitecWebAPI.Domain.csproj" />
   </ItemGroup>
 

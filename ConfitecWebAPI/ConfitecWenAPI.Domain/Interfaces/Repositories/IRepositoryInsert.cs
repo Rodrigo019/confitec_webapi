@@ -2,11 +2,9 @@
 
 namespace ConfitecWebAPI.Domain.Interfaces.Repositories
 {
-    public interface IRepositoryCrudBase<T>
+    public interface IRepositoryInsert<T>
         where T : BaseDomain
     {
-        bool Delete(int id);
-        T Update(T domain);
-        T Get(int id);
+        T Insert(T domain);
     }
 }

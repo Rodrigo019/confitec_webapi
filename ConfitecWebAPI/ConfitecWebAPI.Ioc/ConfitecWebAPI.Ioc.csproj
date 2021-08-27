@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConfitecWebAPI.Repository\ConfitecWebAPI.Repository.csproj" />
     <ProjectReference Include="..\ConfitecWebAPI.Service\ConfitecWebAPI.Service.csproj" />
     <ProjectReference Include="..\ConfitecWenAPI.Domain\ConfitecWebAPI.Domain.csproj" />
   </ItemGroup>

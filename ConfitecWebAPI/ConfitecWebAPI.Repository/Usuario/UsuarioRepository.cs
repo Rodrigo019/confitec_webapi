@@ -1,29 +1,60 @@
 ﻿using ConfitecWebAPI.Domain.Aggregations.Usuario.Entities;
 using ConfitecWebAPI.Domain.Aggregations.Usuario.Interfaces;
-using System;
+using ConfitecWebAPI.Domain.Exceptions;
+using ConfitecWebAPI.Domain.Interfaces.Mapping;
+using ConfitecWebAPI.Repository.Base;
+using ConfitecWebAPI.Repository.Context;
+using ConfitecWebAPI.Repository.Entities;
+using System.Linq;
 
 namespace ConfitecWebAPI.Repository.Usuario
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : 
+        InsertBase<UsuarioDomain, UsuarioEntity>, IUsuarioRepository
     {
-        public bool Delete(UsuarioDomain domain)
+        private readonly IMapConfig mapper;
+        private readonly ConfitecWebAPIContext context;
+
+        public UsuarioRepository(ConfitecWebAPIContext context, IMapConfig mapper) : base(context, mapper)
         {
-            throw new NotImplementedException();
+            this.mapper = mapper;
+            this.context = context;
+        }
+
+        public bool Delete(int id)
+        {
+            UsuarioEntity entity = context.Usuarios.FirstOrDefault(x => x.Id == id);
+
+            if (entity == null)
+                throw new ValidacaoException($"Usuário { id } não encontrado!");
+
+            context.Remove(entity);
+
+            return context.SaveChanges() > 0;
         }
 
         public UsuarioDomain Get(int id)
         {
-            throw new NotImplementedException();
+            UsuarioEntity entity = context.Usuarios.FirstOrDefault(x => x.Id == id);
+            return mapper.Map<UsuarioEntity, UsuarioDomain>(entity);
         }
 
-        public bool Insert(UsuarioDomain domain)
+        public UsuarioDomain Update(UsuarioDomain domain)
         {
-            throw new NotImplementedException();
-        }
+            UsuarioEntity entity = context.Usuarios.FirstOrDefault(x => x.Id == domain.Id);
 
-        public bool Update(UsuarioDomain domain)
-        {
-            throw new NotImplementedException();
+            if (entity == null)
+                throw new ValidacaoException($"Usuário { domain.Id } não encontrado!");
+
+            entity.Nome = domain.Nome;
+            entity.Sobrenome = domain.Sobrenome;
+            entity.Email = domain.Email;
+            entity.DataNascimento = domain.DataNascimento;
+            entity.Escolaridade = (short)domain.Escolaridade;
+
+            context.SaveChanges();
+
+            return mapper.Map<UsuarioEntity, UsuarioDomain>(entity);
         }
     }
 }
