@@ -16,7 +16,8 @@ namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Entities
 
         public void IdValido()
         {
-            if (Id <= 1) throw new ValidacaoException("O Id informado precisa ser maior que 0!");
+            if (Id <= 0) 
+                throw new ValidacaoException("O Id informado precisa ser maior que 0!");
         }
         public void EmailValido()
         {
