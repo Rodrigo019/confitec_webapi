@@ -26,10 +26,9 @@ namespace ConfitecWebAPI.Controllers.Base
 
                 return Ok(resultado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return StatusCode(500, $"Erro ao buscar { typeof(T).Name }: { ex.Message }");
             }
         }
     }
