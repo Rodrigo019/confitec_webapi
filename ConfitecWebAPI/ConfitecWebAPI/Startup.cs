@@ -36,6 +36,7 @@ namespace ConfitecWebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            //Adicionando dados iniciais para teste
             var context = provider.GetService<ConfitecWebAPIContext>();
             AdicionarUsuariosTeste.Adicionar(context);
 

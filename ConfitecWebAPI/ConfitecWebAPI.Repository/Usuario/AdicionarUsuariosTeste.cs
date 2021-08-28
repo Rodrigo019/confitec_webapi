@@ -12,7 +12,7 @@ namespace ConfitecWebAPI.Repository.Usuario
             List<UsuarioEntity> usuarios = new List<UsuarioEntity>();
 
             Random random = new Random();
-            DateTime startDate = new DateTime(2015, 1, 1);
+            DateTime startDate = new DateTime(2020, 1, 1);
             int rangeDate = (DateTime.Today - startDate).Days;
 
             for (int cont = 1; cont <= 50; cont++)
