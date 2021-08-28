@@ -11,9 +11,8 @@ namespace ConfitecWebAPI.Controllers.Base
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CrudBaseController<T, Targs> : ControllerBase
+    public class CrudBaseController<T> : ControllerBase
         where T : BaseDomain
-        where Targs : BaseArgs
     {
         private readonly IServiceCrudBase<T> service;
 

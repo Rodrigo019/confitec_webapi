@@ -7,5 +7,9 @@ namespace ConfitecWenAPI.Domain.Aggregations.Base
     public class BaseArgs
     {
         public int Id { get; set; }
+        public int? Asc { get; set; }
+        public string CampoAsc { get; set; }
+        public int PaginacaoInicio { get; set; } = 1;
+        public int PaginacaoQuantidade { get; set; } = 10;
     }
 }

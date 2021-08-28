@@ -5,6 +5,7 @@ using ConfitecWebAPI.Domain.Interfaces.Mapping;
 using ConfitecWebAPI.Repository.Base;
 using ConfitecWebAPI.Repository.Context;
 using ConfitecWebAPI.Repository.Entities;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConfitecWebAPI.Repository.Usuario
@@ -37,6 +38,23 @@ namespace ConfitecWebAPI.Repository.Usuario
         {
             UsuarioEntity entity = context.Usuarios.FirstOrDefault(x => x.Id == id);
             return mapper.Map<UsuarioEntity, UsuarioDomain>(entity);
+        }
+
+        public KeyValuePair<long, IEnumerable<UsuarioDomain>> GetPaged(UsuarioArgs args)
+        {
+            List<UsuarioEntity> usuariosFiltrados = context.Usuarios
+                .Where(x => !string.IsNullOrEmpty(args.Nome) ? x.Nome.Contains(args.Nome) : true)
+                .Where(x => !string.IsNullOrEmpty(args.Sobrenome) ? x.Sobrenome.Contains(args.Sobrenome) : true)
+                .Where(x => args.Escolaridade != null ? x.Escolaridade == (short)args.Escolaridade : true)
+                .ToList();
+
+            List<UsuarioEntity> usuarios = usuariosFiltrados
+                .Skip((args.PaginacaoInicio - 1) * args.PaginacaoQuantidade)
+                .Take(args.PaginacaoQuantidade)
+                .ToList();            
+
+            List<UsuarioDomain> usuariosDomain = mapper.Map<List<UsuarioEntity>, List<UsuarioDomain>>(usuarios);
+            return new KeyValuePair<long, IEnumerable<UsuarioDomain>>(usuariosFiltrados.Count(), usuariosDomain);
         }
 
         public UsuarioDomain Update(UsuarioDomain domain)

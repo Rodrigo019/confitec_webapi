@@ -1,7 +1,7 @@
 ﻿using ConfitecWebAPI.Domain.Aggregations.Usuario.Entities;
 using ConfitecWebAPI.Domain.Aggregations.Usuario.Interfaces;
 using ConfitecWebAPI.Domain.Exceptions;
-using System;
+using System.Collections.Generic;
 
 namespace ConfitecWebAPI.Service.Usuario
 {
@@ -26,25 +26,24 @@ namespace ConfitecWebAPI.Service.Usuario
 
             return repository.Get(id);
         }
+
+        public KeyValuePair<long, IEnumerable<UsuarioDomain>> GetPaged(UsuarioArgs args)
+        {
+            return repository.GetPaged(args);
+        }
+
         public UsuarioDomain Insert(UsuarioDomain domain)
         {
-            if (domain == null)
-                throw new ValidacaoException("Usuário informado não pode ser nulo!");
-            if (!domain.EmailValido())
-                throw new ValidacaoException("O e-mail do usuário é inválido!");
-            if (!domain.DataNascimentoValida())
-                throw new ValidacaoException("Data de nascimento do usuário é inválida!");
+            domain.EmailValido();
+            domain.DataNascimentoValida();
 
             return repository.Insert(domain);
         }
         public UsuarioDomain Update(UsuarioDomain domain)
         {
-            if (domain == null || domain.Id <= 0)
-                throw new ValidacaoException("Não é possível alterar usuários com Id 0 ou menor!");
-            if (!domain.EmailValido())
-                throw new ValidacaoException("O e-mail do usuário é inválido!");
-            if (!domain.DataNascimentoValida())
-                throw new ValidacaoException("Data de nascimento do usuário é inválida!");
+            domain.IdValido();
+            domain.EmailValido();
+            domain.DataNascimentoValida();
 
             return repository.Update(domain);
         }

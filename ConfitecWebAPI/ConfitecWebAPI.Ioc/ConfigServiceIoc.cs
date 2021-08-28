@@ -12,6 +12,7 @@ namespace ConfitecWebAPI.Ioc
         {
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IServiceCrudBase<UsuarioDomain>, UsuarioService>();
+            services.AddTransient<IServicePaged<UsuarioDomain, UsuarioArgs>, UsuarioService>();
         }
     }
 }

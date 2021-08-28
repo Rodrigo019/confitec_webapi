@@ -7,9 +7,9 @@ namespace ConfitecWebAPI.Controllers.Usuario
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : CrudBaseController<UsuarioDomain>
+    public class UsuarioPagedController : PagedBaseController<UsuarioDomain, UsuarioArgs>
     {
-        public UsuarioController(IServiceCrudBase<UsuarioDomain> service) : base(service)
+        public UsuarioPagedController(IServicePaged<UsuarioDomain, UsuarioArgs> service) : base(service)
         {
         }
     }

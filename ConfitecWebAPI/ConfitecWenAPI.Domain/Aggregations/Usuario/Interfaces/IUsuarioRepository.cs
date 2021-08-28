@@ -5,7 +5,8 @@ namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Interfaces
 {
     public interface IUsuarioRepository :
         IRepositoryCrudBase<UsuarioDomain>,
-        IRepositoryInsert<UsuarioDomain>
+        IRepositoryInsert<UsuarioDomain>,
+        IRepositoryPaged<UsuarioDomain, UsuarioArgs>
     {
     }
 }
