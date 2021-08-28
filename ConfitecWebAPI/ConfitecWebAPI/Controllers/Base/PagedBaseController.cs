@@ -18,7 +18,7 @@ namespace ConfitecWebAPI.Controllers.Base
         }
 
         [HttpGet]
-        public IActionResult Get(Targs args)
+        public IActionResult Get([FromQuery]Targs args)
         {
             try
             {
