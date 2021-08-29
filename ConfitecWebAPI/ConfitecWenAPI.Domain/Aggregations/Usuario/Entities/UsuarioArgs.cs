@@ -1,4 +1,5 @@
-﻿using ConfitecWenAPI.Domain.Aggregations.Base;
+﻿using System;
+using ConfitecWenAPI.Domain.Aggregations.Base;
 using ConfitecWenAPI.Domain.ObjectValues;
 
 namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Entities
@@ -7,6 +8,7 @@ namespace ConfitecWebAPI.Domain.Aggregations.Usuario.Entities
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+        public DateTime DataNascimento { get; set; }
         public Escolaridade? Escolaridade { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using ConfitecWebAPI.Domain.Interfaces.Services;
+using ConfitecWebAPI.Models;
 using ConfitecWenAPI.Domain.Aggregations.Base;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,15 +23,25 @@ namespace ConfitecWebAPI.Controllers.Base
         [HttpGet]
         public IActionResult Get([FromQuery]Targs args)
         {
+            Resposta<KeyValuePair<long, IEnumerable<T>>> resposta = new Resposta<KeyValuePair<long, IEnumerable<T>>>();
+
             try
             {
-                var resultado = service.GetPaged(args);
+                var registros = service.GetPaged(args);
 
-                return Ok(resultado);
+                resposta.Sucesso = true;
+                resposta.Status = HttpStatusCode.OK;
+                resposta.Retorno = registros;
+
+                return Ok(resposta);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro ao buscar { typeof(T).Name }: { ex.Message }");
+                resposta.Sucesso = false;
+                resposta.Status = HttpStatusCode.InternalServerError;
+                resposta.Erros = new List<string> { $"Erro ao buscar { typeof(T).Name }: { ex.Message }" };
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, resposta);
             }
         }
     }

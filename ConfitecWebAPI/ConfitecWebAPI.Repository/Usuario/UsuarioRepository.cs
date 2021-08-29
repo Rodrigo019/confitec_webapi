@@ -43,6 +43,7 @@ namespace ConfitecWebAPI.Repository.Usuario
         public KeyValuePair<long, IEnumerable<UsuarioDomain>> GetPaged(UsuarioArgs args)
         {
             List<UsuarioEntity> usuariosFiltrados = context.Usuarios
+                .Where(x => args.Id > 0 ? x.Id == args.Id : true)
                 .Where(x => !string.IsNullOrEmpty(args.Nome) ? x.Nome.Contains(args.Nome) : true)
                 .Where(x => !string.IsNullOrEmpty(args.Sobrenome) ? x.Sobrenome.Contains(args.Sobrenome) : true)
                 .Where(x => args.Escolaridade != null ? x.Escolaridade == (short)args.Escolaridade : true)

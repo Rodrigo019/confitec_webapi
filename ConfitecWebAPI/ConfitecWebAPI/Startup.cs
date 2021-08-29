@@ -38,7 +38,14 @@ namespace ConfitecWebAPI
 
             //Adicionando dados iniciais para teste
             var context = provider.GetService<ConfitecWebAPIContext>();
-            AdicionarUsuariosTeste.Adicionar(context);
+            AdicionarUsuariosTeste.Adicionar(context);            
+
+            app.UseCors(x =>
+                x.AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowAnyOrigin());
+
+            app.UseHttpsRedirection();
 
             app.UseMvc();
         }
